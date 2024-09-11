@@ -1,0 +1,19 @@
+Understand organization needs
+- I would first of all speak with the company stakeholders eg data analysts, business people and try to understand the main problem thay want to solve.
+
+Come up with a data strategy
+After this I will come up with a plan of how I would go around solving the problem in the most effective way
+It is at this stage that I will also come up with the data governance for the company, ie the type of data we need and in which format
+
+Data extraction
+I will extract the needed data, do transformations on it and load it to the data warehouse. I will create data models to be used and even monitor the data warehouse to ensure it has the needed data.
+
+Pipelines maintenance and scheduling
+I will schedule repeated tasks done by pipelines at the required intervals, watch for breakage of pipelines that handle data processes
+
+Release the data in the warehouse to analysts
+After ensuring I have the required and relevant data in the data warehouse, I will release it to data analysts. I will set required permissions on tables. I will also use data visualization tools to display the data to users.
+Once the business requirements are met, I will keep maintaining my data pipelines to ensure data is still being released well. 
+
+Deployment
+In case the analytics team has something they want to deploy or put online, I will handle the deployment process and continue with my work maintaining the data infrastructure.
