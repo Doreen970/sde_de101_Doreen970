@@ -1,0 +1,576 @@
+PYTHON BASICS QUESTIONS
+
+# Variable: A storage location identified by its name, containing some value.
+# Question: Assign a value of 10 to variable a and 20 to variable b
+# Question: Store the result of a + b in a variable c and print it. What is the result of a + b?
+a = 10
+b = 20
+c = (a + b)
+print(c)
+
+s = '  Some string '
+# Question: How do you remove the empty spaces in front of and behind the string s?
+print(s.strip())
+
+# Data Structures are ways of representing data, each has its own pros and cons and places that they are the right fit.
+## List: A collection of elements that can be accessed by knowing the location (aka index) of the element
+l = [1, 2, 3, 4]
+
+# Question: How do you access the elements in index 0 and 3? Print the results.
+print(l[0])
+print(l[3])
+## NOTE: lists retain the order of elements in it but dictionary doesn't
+
+## Dictionary: A collection of key-value pairs, where each key is mapped to a value using a hash function. Provides fast data retrieval based on keys.
+d = {'a': 1, 'b': 2}
+
+# Question: How do you access the values associated with keys 'a' and 'b'?
+## NOTE: The dictionary cannot have duplicate keys
+print(d.get('a'))  # Will print 1
+print(d.get('b')) 
+
+## Set: A collection of unique elements that do not allow duplicates
+my_set = set()
+my_set.add(10)
+my_set.add(10)
+my_set.add(10)
+
+# Question: What will be the output of my_set?
+print(my_set)
+## Tuple: A collection of immutable (non-changeable) elements, tuples retain their order once created.
+my_tuple = (1, 'hello', 3.14)
+
+# Question: What is the value of my_tuple?
+# the value will be 1, hello, 3.14
+# Accessing elements by index
+
+# Question: How do you access the elements in index 0 and 1 of my_tuple?
+my_tuple[0]
+my_tuple[1]
+# Counting occurrences of an element
+count_tuple = (1, 2, 3, 1, 1, 2)
+
+# Question: How many times does the number 1 appear in count_tuple?
+# Answer: it appears thrice
+print(count_tuple.count(1))
+# Finding the index of an element
+# Question: What is the index of the first occurrence of the number 2 in count_tuple?
+#Answer = index 1
+# Loop allows a specific chunk of code to be repeated a certain number of times
+# Example: We can use a loop to print numbers 0 through 10
+for i in range(11):
+    print(i)
+
+    # We can loop through our data structures as shown below
+    # Question: How do you loop through a list and print its elements?
+    for m in n:
+        print(m)
+	# Dictionary loop
+	# Question: How do you loop through a dictionary and print its keys and values?
+	for k, v in d.items():
+	    print(k, v)
+	    # Comprehension is a shorthand way of writing a loop
+	    # Question: Multiply every element in list l with 2 and print the result
+	    print(i * 2 for i in l)
+	    # Functions: A block of code that can be re-used as needed. This allows for us to have logic defined in one place, making it easy to maintain and use.
+	    ## For example, let's create a simple function that takes a list as an input and returns another list whose values are greater than 3
+
+	    def gt_three(list_exa):
+	        return [a for a in list_exa if a > 3]
+		## NOTE: we use list comprehension with filtering in the above function
+
+		list_1 = [1, 2, 3, 4, 5, 6]
+		# Question: How do you use the gt_three function to filter elements greater than 3 from list_1?
+		gt_three(list_1)
+		list_2 = [1, 2, 3, 1, 1, 1]
+		# Question: What will be the output of gt_three(list_2)?
+		print(gt_three(list_2))
+		# Classes and Objects
+		# Think of a class as a blueprint and objects as things created based on that blueprint
+		# You can define classes in Python as shown below
+		class DataExtractor:
+
+		    def __init__(self, some_value):
+		            self.some_value = some_value
+
+			        def get_connection(self):
+				        # Some logic
+					        # some_value is accessible using self.some_value
+						        pass
+
+							    def close_connection(self):
+							            # Some logic
+								            # some_value is accessible using self.some_value
+									            pass
+
+										    # Question: How do you create a DataExtractor object and print its some_value attribute?
+										    de_object = DataExtractor(10)
+										    print(de_object.some_value)
+										    # Libraries are code that can be reused.
+
+										    # Python comes with some standard libraries to do common operations, 
+										    # such as the datetime library to work with time (although there are better libraries)
+										    from datetime import datetime  # You can import library or your code from another file with the import statement
+
+										    # Question: How do you print the current date in the format 'YYYY MM DD'? Hint: Google strftime
+										    print(datetime.now().strftime('%Y %m %d'))
+										    # Exception handling: When an error occurs, we need our code to gracefully handle it without just stopping. 
+										    # Here is how we can handle errors when the program is running
+										    try:
+										        # Code that might raise an exception
+											    pass
+											    except Exception as e: 
+											        # Code that runs if the exception occurs
+												    pass
+												    else:
+												        # Code that runs if no exception occurs
+													    pass
+													    finally:
+													        # Code that always runs, regardless of exceptions
+														    pass
+
+														    # For example, let's consider exception handling on accessing an element that is not present in a list l
+														    l = [1, 2, 3, 4, 5]
+
+														    # Question: How do you handle an IndexError when accessing an invalid index in a list?
+														    index = 7
+														    try:
+														        # Attempt to access an element at an invalid index
+															    element = l[index]
+															        print(f"Element at index {index} is {element}")
+																except IndexError:
+																    print(f"Error: Index {index} is out of range for the list.")
+																    finally:
+																        print("Execution completed.")
+																	# NOTE: in the except block its preferred to specify the exact erro/exception that you want to handle
+
+
+DATA EXTRACTION AND LOAD QUESTIONS
+# Extract: Process to pull data from Source system
+# Load: Process to write data to a destination system
+
+# Common upstream & downstream systems
+# OLTP Databases: Postgres, MySQL, sqlite3, etc
+# OLAP Databases: Snowflake, BigQuery, Clickhouse, DuckDB, etc
+# Cloud data storage: AWS S3, GCP Cloud Store, Minio, etc
+# Queue systems: Kafka, Redpanda, etc
+# API
+# Local disk: csv, excel, json, xml files
+# SFTP\FTP server
+
+# Databases: When reading or writing to a database we use a database driver. Database drivers are libraries that we can use to read or write to a database.
+# Question: How do you read data from a sqlite3 database and write to a DuckDB database?
+# Hint: Look at importing the database libraries for sqlite3 and duckdb and create connections to talk to the respective databases
+
+# Fetch data from the SQLite Customer table
+
+# Insert data into the DuckDB Customer table
+
+# Hint: Look for Commit and close the connections
+# Commit tells the DB connection to send the data to the database and commit it, if you don't commit the data will not be inserted
+
+# We should close the connection, as DB connections are expensive
+import sqlite3
+import duckdb
+
+sqlite_conn = sqlite3.connect('example_sqlite.db')
+sqlite_cursor = sqlite_conn.cursor()
+
+sqlite_cursor.execute("SELECT * FROM Customer")
+customer_data = sqlite_cursor.fetchall()
+
+duckdb_conn = duckdb.connect('example_duckdb.db')
+duckdb_cursor = duckdb_conn.cursor()
+
+
+
+for row in customer_data:
+    duckdb_cursor.execute("INSERT INTO Customer VALUES (?, ?, ?)", row)
+
+    duckdb_conn.commit()
+    sqlite_conn.close()
+    duckdb_conn.close()
+
+    # Cloud storage
+    # Question: How do you read data from the S3 location given below and write the data to a DuckDB database?
+    # Data source: https://docs.opendata.aws/noaa-ghcn-pds/readme.html station data at path "csv.gz/by_station/ASN00002022.csv.gz"
+    # Hint: Use boto3 client with UNSIGNED config to access the S3 bucket
+    # Hint: The data will be zipped you have to unzip it and decode it to utf-8
+
+    # AWS S3 bucket and file details
+    bucket_name = "noaa-ghcn-pds"
+    file_key = "csv.gz/by_station/ASN00002022.csv.gz"
+    # Create a boto3 client with anonymous access
+
+    # Download the CSV file from S3
+    # Decompress the gzip data
+    # Read the CSV file using csv.reader
+    # Connect to the DuckDB database (assume WeatherData table exists)
+
+    # Insert data into the DuckDB WeatherData table
+    pip install boto3 duckdb
+
+    import boto3
+    import gzip
+    import csv
+    import duckdb
+    from botocore import UNSIGNED
+    from botocore.config import Config
+
+
+    s3 = boto3.client('s3', config=Config(signature_version=UNSIGNED))
+
+
+    response = s3.get_object(Bucket=bucket_name, Key=file_key)
+    gzipped_data = response['Body'].read()
+
+    Decompress the gzip data
+    csv_data = gzip.decompress(gzipped_data).decode('utf-8')
+
+    #Read the CSV file 
+    csv_reader = csv.reader(csv_data.splitlines())
+
+
+    # Connect to DuckDB database 
+    duckdb_conn = duckdb.connect('weather_data.db')
+
+
+    # Insert data into the DuckDB WeatherData table
+
+    # Skip the header if it exists
+    next(csv_reader)
+
+    # Insert rows into the WeatherData table
+    insert_query = "INSERT INTO WeatherData VALUES (?, ?, ?, ?, ?)"
+    for row in csv_reader:
+        
+	    duckdb_conn.execute(insert_query)  
+
+	    duckdb_conn.commit()
+	    duckdb_conn.close()
+
+	    print("Data successfully loaded from S3 to DuckDB!")
+
+
+	    # API
+	    # Question: How do you read data from the CoinCap API given below and write the data to a DuckDB database?
+	    # URL: "https://api.coincap.io/v2/exchanges"
+	    # Hint: use requests library
+
+	    # Define the API endpoint
+	    url = "https://api.coincap.io/v2/exchanges"
+
+	    # Fetch data from the CoinCap API
+	    # Connect to the DuckDB database
+
+	    # Insert data into the DuckDB Exchanges table
+	    # Prepare data for insertion
+	    # Hint: Ensure that the data types of the data to be inserted is compatible with DuckDBs data column types in ./setup_db.py
+	    pip install requests
+
+	    import requests
+	    import duckdb
+
+	    url = "https://api.coincap.io/v2/exchanges"
+
+	    # Fetch data from the CoinCap API
+	    response = requests.get(url)
+	    if response.status_code == 200:
+	        exchanges_data = response.json()["data"]
+		else:
+		    print(f"Failed to fetch data: {response.status_code}")
+		        exchanges_data = []
+
+			# Connect to DuckDB
+			duckdb_conn = duckdb.connect('crypto_data.db')
+
+
+
+			# Prepare data for insertion
+			insert_query = '''
+			    INSERT INTO Exchanges 
+			        (id, name, rank, percentTotalVolume, volumeUsd, tradingPairs, socket, exchangeUrl, updated) 
+				    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+				    '''
+
+				    # Insert data into DuckDB
+				    for exchange in exchanges_data:
+				        
+					    row = (
+					            exchange.get("id"),
+						            exchange.get("name"),
+							            int(exchange.get("rank", 0)),  # Rank as integer
+								            float(exchange.get("percentTotalVolume", 0.0)),  # Volume percentage as float
+									            float(exchange.get("volumeUsd", 0.0)),  # USD volume as float
+										            exchange.get("tradingPairs", ""),
+											            bool(exchange.get("socket", False)),  # Convert socket value to boolean
+												            exchange.get("exchangeUrl", ""),
+													            exchange.get("updated", "")
+														        )
+															    
+															        duckdb_conn.execute(insert_query, row)
+
+																# Step 7: Commit and close the DuckDB connection
+																duckdb_conn.commit()
+																duckdb_conn.close()
+
+
+
+																# Local disk
+																# Question: How do you read a CSV file from local disk and write it to a database?
+																# Look up open function with csvreader for python
+																import csv
+																import sqlite3
+
+																# establish database connection
+																connection = sqlite3.connect('database_path')  
+																cursor = connection.cursor()
+
+
+																# Read the CSV file from local disk
+																with open('sales_data.csv', newline='') as csvfile:
+																    csvreader = csv.reader(csvfile)
+																        
+																	    #Skip the header row (optional, depending on your CSV file)
+																	        next(csvreader)
+																		    
+																		        #Insert each row into the database
+																			    for row in csvreader:
+																			            year = int(row[0])
+																				            sales = float(row[1])
+																					            
+																						            cursor.execute('''
+																							                INSERT INTO sales_data (year, sales)
+																									            VALUES (?, ?)
+																										            ''', (year, sales))
+
+																											    # Commit the transaction and close the connection
+																											    connection.commit()
+																											    connection.close()
+
+																											    # Web scraping
+																											    # Questions: Use beatiful soup to scrape the below website and print all the links in that website
+																											    # URL of the website to scrape
+																											    url = 'https://example.com'
+
+																											    import requests
+																											    from bs4 import BeautifulSoup
+
+																											    #get data from the website using requests
+
+																											    response = requests.get(url)
+
+																											    # extract HTML content
+																											    soup = BeautifulSoup(response.text, 'html.parser')
+
+																											    # Example: Find and print all the links on the webpage
+																											    for b in soup.find_all('a'):
+																											        print(b.get('href'))
+
+
+DATA TRANSFORMATION QUESTIONS
+print(
+    "################################################################################"
+    )
+    print("Use standard python libraries to do the transformations")
+    print(
+        "################################################################################"
+	)
+
+	# Question: How do you read data from a CSV file at ./data/sample_data.csv into a list of dictionaries?
+	# import csv module
+	import csv
+
+	# Path to the CSV file
+	file_path = './data/sample_data.csv'
+
+	# Initialize an empty list to store dictionaries
+	my_store = []
+
+	# Open and read the CSV file
+	with open(file_path, mode='r', newline='') as csvfile:
+	    csv_reader = csv.DictReader(csvfile)
+	        
+		    # Iterate through each row and append to the list
+		        for row in csv_reader:
+			        my_store.append(dict(row))
+
+				#Print the first few dictionaries to check the data
+				for entry in my_store[:5]:
+				    print(entry)
+
+				    # Question: How do you remove duplicate rows based on customer ID?
+				    no_same = []
+				    my_data = set()
+
+				    for row in my_store:
+				        if row["customerID"] not in my_data:
+					        no_same.append(row)
+						        my_data.add(row["customerID"])
+							    else:
+							            print("This is a duplicate ID")    
+								    # Question: How do you handle missing values by replacing them with 0?
+								    for row in data:
+								        if not row["a"]:
+									        row["a"] = 0
+										# Question: How do you remove outliers such as age > 100 or purchase amount > 1000?
+										for i in range(len(data) - 1, -1, -1):
+										    if data[i]["age"] > 100 or data[i]["purchase_amount"] > 1000:
+										            del data[i]  
+
+											    # Question: How do you convert the Gender column to a binary format (0 for Female, 1 for Male)?
+											    for row in data:
+											        if row["Gendar"] == "Female":
+												        row["Gender"] = 0
+													    elif row["Gendar"] == "Male":
+													            row["Gendar"] = 1   
+														    # Question: How do you split the Customer_Name column into separate First_Name and Last_Name columns?
+														    for row in data:
+														        First_Name, Last_Name = row["Customer_Name"].split(" ", 1)
+															    row["First_Name"] = First_Name
+															        row["Last_Name"] = Last_Name
+																# Question: How do you calculate the total purchase amount by Gender?
+																total_purchase_by_gender = {}
+																for row in data:
+																    total_purchase_by_gender[row["Gender"]] += float(row["Purchase_Amount"])
+																    # Question: How do you calculate the average purchase amount by Age group?
+																    # assume age_groups is the grouping we want
+																    # hint: Why do we convert to float?
+																    age_groups = {"18-30": [], "31-40": [], "41-50": [], "51-60": [], "61-70": []}
+
+																    for row in data:
+																        age = int(row["Age"])
+																	    if age <= 30:
+																	            age_groups["18-30"].append(float(row["Purchase_Amount"]))
+																		        elif age <= 40:
+																			        age_groups["31-40"].append(float(row["Purchase_Amount"]))
+																				    elif age <= 50:
+																				            age_groups["41-50"].append(float(row["Purchase_Amount"]))
+																					        elif age <= 60:
+																						        age_groups["51-60"].append(float(row["Purchase_Amount"]))
+																							    else:
+																							            age_groups["61-70"].append(float(row["Purchase_Amount"]))
+
+																								    average_purchase_by_age_group = {
+																								        group: sum(amounts) / len(amounts) for group, amounts in age_groups.items()
+																									}
+
+																									# Question: How do you print the results for total purchase amount by Gender and average purchase amount by Age group?
+																									your_total_purchase_amount_by_gender = {} # your results should be assigned to this variable
+																									average_purchase_by_age_group = {} # your results should be assigned to this variable
+
+																									print(f"Total purchase amount by Gender: {your_total_purchase_amount_by_gender}")
+																									print(f"Average purchase amount by Age group: {average_purchase_by_age_group}")
+
+																									print(
+																									    "################################################################################"
+																									    )
+																									    print("Use DuckDB to do the transformations")
+																									    print(
+																									        "################################################################################"
+																										)
+
+																										# Question: How do you connect to DuckDB and load data from a CSV file into a DuckDB table?
+																										# Connect to DuckDB and load data
+																										import duckdb
+
+																										con = duckdb.connect(database="my_database", read_only=False)
+																										con.execute(
+																										    "CREATE TABLE new (Customer_ID INTEGER, Customer_Name VARCHAR, Age INTEGER, Gender VARCHAR, Purchase_Amount FLOAT, Purchase_Date DATE)"
+																										    )
+																										    # Read data from CSV file into DuckDB table
+																										    con.execute("COPY data FROM './new/my.csv' WITH HEADER CSV")
+																										    # Question: How do you remove duplicate rows based on customer ID in DuckDB?
+																										    con.execute("CREATE TABLE no_duplicate AS SELECT DISTINCT * FROM new")
+																										    # Question: How do you handle missing values by replacing them with 0 in DuckDB?
+																										    con.execute(
+																										        "CREATE TABLE no_missing AS SELECT \
+																											             Customer_ID, Customer_Name, \
+																												                  COALESCE(Age, 0) AS Age, \
+																														               Gender, \
+																															                    COALESCE(Purchase_Amount, 0.0) AS Purchase_Amount, \
+																																	                 Purchase_Date \
+																																			              FROM new"
+																																				      )
+																																				      # Question: How do you remove outliers (e.g., age > 100 or purchase amount > 1000) in DuckDB?
+																																				      con.execute(
+																																				          "DELETE FROM no_missing
+																																					  WHERE age > 100
+																																					  OR purchase_amount > 1000;
+																																					  "
+																																					  )
+																																					  # Question: How do you convert the Gender column to a binary format (0 for Female, 1 for Male) in DuckDB?
+																																					  con.execute(
+																																					      "SELECT *, 
+																																					             CASE WHEN Gender = 'Female' THEN 0 ELSE 1 END AS Gender_Binary
+																																						     FROM no_missing;
+																																						     "
+																																						     )
+
+																																						     # Question: How do you split the Customer_Name column into separate First_Name and Last_Name columns in DuckDB?
+																																						     con.execute(
+																																						         "SELECT 
+																																							     SPLIT_PART(Customer_Name, ' ', 1) AS First_Name, 
+																																							         SPLIT_PART(Customer_Name, ' ', 2) AS Last_Name  
+																																								 FROM 
+																																								     no_missing;
+																																								     "
+																																								     )
+																																								     # Question: How do you calculate the total purchase amount by Gender in DuckDB?
+																																								     total_purchase_by_gender = con.execute(
+																																								         "SELECT 
+																																									     Gender_Binary, 
+																																									         SUM(purchase_amount) AS Total_Purchase_Amount
+																																										 FROM 
+																																										     no_missing
+																																										     GROUP BY 
+																																										         Gender_Binary;
+																																											 "
+																																											 )
+																																											 # Question: How do you calculate the average purchase amount by Age group in DuckDB?
+																																											 average_purchase_by_age_group = con.execute(
+																																											     "SELECT
+																																											         Age,
+																																												     AVG(purchase_amount)
+																																												         FROM no_missing
+																																													     GROUP_BY
+																																													         Age"
+																																														 )
+																																														 # Question: How do you print the results for total purchase amount by Gender and average purchase amount by Age group in DuckDB?
+																																														 print("====================== Results ======================")
+																																														 print("Total purchase amount by Gender:")
+																																														 print(total_purchase_by_gender)
+																																														 print("Average purchase amount by Age group:")
+																																														 print(average_purchase_by_age_group)
+
+
+DATA QUALITY QUESTION
+import polars as pl
+from cuallee import Check, CheckLevel
+
+# Read CSV file into Polars DataFrame
+df = pl.read_csv("./data/sample_data.csv")
+
+# Question: Check for Nulls on column Id and that Customer_ID column is unique
+# check docs at https://canimus.github.io/cuallee/polars/ on how to define a check and run it.
+# you will end up with a dataframe of results, check that the `status` column does not have any "FAIL" in it
+
+# Initialize the Check object
+check = Check()
+
+# Define checks
+check.is_complete("Id")  
+check.is_unique("Customer_ID")  
+
+# Run the checks
+results = check.validate(df)
+
+# Display results
+print(results)
+
+# Check that status column does not have fail
+if (results.filter(pl.col("status") == "FAIL").shape[0]) == 0:
+    print("All checks passed!")
+    else:
+        print("Some checks failed.")
+
