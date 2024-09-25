@@ -1,0 +1,16 @@
+The following are practices to implement when creating our data pipelines:
+
+1. Use standard patterns to transform your data ie we have raw layer, transformed layer, consumption layer and interface layer.
+
+2. We should ensure data is valid before exposing to consumers ie we should check that the data meets our expectations and it passes the checks.
+
+3. Avoid data duplicates
+We should ensure that when we rerun our data pipelines, we do not get duplicate rows.
+
+4. Write DRY code and ensure I/O is separate from transformation
+If there is a module or function that does one thing repetitively, this module or function should only be written in one place. 
+The functions or code for data input and output operations should be different from the code used to perform data transformation.
+
+5. Understand how data flows through your pipelines and what is happening at each stage
+
+6. When you write tests to check your code, ensure they do not break your system. Ensure the checks do not change or distort the functioning of your system.
